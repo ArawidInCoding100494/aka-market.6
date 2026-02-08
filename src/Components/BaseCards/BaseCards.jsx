@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { UseCollection } from '../../Hooks/UseCollection'
-import BaseCard from '../baseCard/baseCard'
+import BaseCard from '../BaseCard/BaseCard'
 import Modal from '../Modal/Modal'
 import CreateBrand from '../CreateBrand/CreateBrand'
 import CreateProduct from '../CreateProduct/CreateProduct'
