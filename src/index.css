@@ -1,0 +1,45 @@
+@import "tailwindcss";
+@tailwind utilities;
+
+@layer base {
+    body{
+        @apply bg-[#2D5F5D] text-white ;
+    }
+}
+
+@layer components{
+    .btn{@apply
+    bg-[#2D5F5D] text-white capitalize p-1 rounded-[10px] cursor-pointer border hover:bg-white hover:text-[#2D5F5D]
+    ;}
+
+    .inp{@apply
+    border rounded-[8px] outline-0 capitalize px-2
+    }
+
+    .brendCard{@apply
+      border w-[95%] lg:w-[70%]  lg:text-center px-3 py-1 cursor-pointer rounded-2xl bg-[#2D5F5D] text-white my-2 hover:bg-white hover:text-[#2D5F5D] duration-300
+    }
+
+      .nav-link {
+    @apply border-2 p-1 px-2 capitalize font-bold rounded-[10px]
+           cursor-pointer duration-300;
+  }
+
+  .nav-link-active {
+    @apply border-white bg-white text-[#2D5F5D] 
+           hover:bg-[#2D5F5D] hover:text-white;
+  }
+
+  .nav-link-inactive {
+    @apply bg-[#2D5F5D] text-white
+           hover:bg-white hover:text-[#2D5F5D];
+  }
+
+  .forma{
+    @apply bg-white text-[#2D5F5D] flex flex-col p-3 rounded-2xl
+  }
+
+  .formLabel{
+    @apply flex flex-col capitalize my-2
+  }
+}
