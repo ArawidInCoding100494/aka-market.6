@@ -1,6 +1,6 @@
-import React from 'react'
 import Header from '../../Components/Header/Header'
 import { NavLink, Outlet } from 'react-router-dom'
+import Footer from '../../Components/Footer/Footer'
 
 const RootLayOut = () => {
 
@@ -42,7 +42,9 @@ const RootLayOut = () => {
             </div>
         </main>
 
-        <footer></footer>
+         <footer className="shrink-0 ">
+          <Footer />
+         </footer>
 
     </div>
   )

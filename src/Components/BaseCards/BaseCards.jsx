@@ -5,16 +5,31 @@ import Modal from '../Modal/Modal'
 import CreateBrand from '../CreateBrand/CreateBrand'
 import CreateProduct from '../CreateProduct/CreateProduct'
 
-const BaseCards = () => {
+const BaseCards = ({ searchTerm }) => {
     const {data: products} = UseCollection("products")
     const {data: brends} = UseCollection("brends")
     const [getBrendId, setGetBrendId] = useState(null)
     const [openBrendModal, setOpenBrendModal] = useState(false)
     const [openProductModal, setOpenProductModal] = useState(false)
 
-    const  filteredProducts = getBrendId
-    ? products?.filter((product)=> product.brendId === getBrendId)
-    : products
+    const filteredProducts = products
+  ?.filter((product) => {
+    // 1. Brend bo‘yicha filter
+    if (!getBrendId) return true;
+    return product.brendId === getBrendId;
+  })
+  ?.filter((product) => {
+    // 2. Qidiruv bo‘yicha filter
+    if (!searchTerm.trim()) return true;
+
+    const search = searchTerm.toLowerCase();
+
+    return (
+      product.pName?.toLowerCase().includes(search) ||
+      product.bName?.toLowerCase().includes(search)
+    );
+  });
+
 
 
   return (

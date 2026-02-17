@@ -5,6 +5,22 @@
     body{
         @apply bg-[#2D5F5D] text-white ;
     }
+
+    table {
+    @apply min-w-full border-collapse;
+  }
+
+  th {
+    @apply bg-[#2D5F5D] text-white font-bold p-3 text-left border capitalize;
+  }
+
+  td {
+    @apply p-2 border bg-[#2D5F5D] text-white capitalize;
+  }
+
+  tr:hover {
+    @apply cursor-pointer;
+  }
 }
 
 @layer components{
@@ -19,7 +35,7 @@
     .brendCard{@apply
       border w-[95%] lg:w-[70%]  lg:text-center px-3 py-1 cursor-pointer rounded-2xl bg-[#2D5F5D] text-white my-2 hover:bg-white hover:text-[#2D5F5D] duration-300
     }
-
+    
       .nav-link {
     @apply border-2 p-1 px-2 capitalize font-bold rounded-[10px]
            cursor-pointer duration-300;
@@ -42,4 +58,29 @@
   .formLabel{
     @apply flex flex-col capitalize my-2
   }
+
+    /* ===== Responsive Table ===== */
+
+  .responsive-table {
+    @apply w-full  lg:border ;
+  }
+
+  .table-head {
+    @apply hidden md:table-header-group;
+  }
+
+  .table-card-row {
+    @apply block md:table-row 
+           shadow-sm mb-5 md:mb-0 md:shadow-none;
+  }
+
+  .table-card-cell {
+    @apply block border-0 md:border md:table-cell px-3 py-2
+           before:content-[attr(data-label)':']
+           before:font-semibold
+           before:mr-3
+           md:before:hidden;
+  }
+
+  
 }

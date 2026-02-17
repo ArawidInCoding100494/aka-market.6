@@ -2,8 +2,8 @@ import { useState } from 'react'
 import Searching from "../../Components/Searching/Searching"
 
 
-const ContentUp = ({title}) => {
-  const [searchTerm, setSearchTerm] = useState("");
+const ContentUp = ({ title, searchTerm, setSearchTerm }) => {
+  // const [searchTerm, setSearchTerm] = useState("");
 
 
   return (
