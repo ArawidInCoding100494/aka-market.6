@@ -41,15 +41,15 @@ const Xisobotlar = () => {
 
        // today-------------------------------
         const todayAllAmounts = todaySold
-        ? todaySold.reduce((acc, item) => acc + Number(item.sellAmount || 0), 0)
+        ? todaySold.reduce((acc, item) => acc + Number(item.soldAmount || 0), 0)
         : 0;
 
         const todayAllsums = todaySold
-        ? todaySold.reduce((acc, item) => acc + Number(item.calcItogo || 0), 0)
+        ? todaySold.reduce((acc, item) => acc + Number(item.itogo || 0), 0)
         : 0;
 
         const todayAllProfits = todaySold
-        ? todaySold.reduce((acc, item) => acc + Number(item.calcingProfit || 0), 0)
+        ? todaySold.reduce((acc, item) => acc + Number(item.soldProfit || 0), 0)
         : 0;
 
 
@@ -57,15 +57,15 @@ const Xisobotlar = () => {
 
 
           const allAmounts = soldProducts
-          ? soldProducts.reduce((acc, item) => acc + Number(item.sellAmount || 0), 0)
+          ? soldProducts.reduce((acc, item) => acc + Number(item.soldAmount || 0), 0)
           : 0;
 
           const allsums = soldProducts
-          ? soldProducts.reduce((acc, item) => acc + Number(item.calcItogo || 0), 0)
+          ? soldProducts.reduce((acc, item) => acc + Number(item.itogo || 0), 0)
           : 0;
 
             const allProfits = soldProducts
-          ? soldProducts.reduce((acc, item) => acc + Number(item.calcingProfit || 0), 0)
+          ? soldProducts.reduce((acc, item) => acc + Number(item.soldProfit || 0), 0)
           : 0;
 
 
