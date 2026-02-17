@@ -6,13 +6,13 @@ import { getAuth } from "firebase/auth";
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCJi4Ry4QTdE2cbplBk3auMCIOlgFovlHM",
-  authDomain: "aka-market-d277f.firebaseapp.com",
-  projectId: "aka-market-d277f",
-  storageBucket: "aka-market-d277f.firebasestorage.app",
-  messagingSenderId: "2327631256",
-  appId: "1:2327631256:web:b85b92fc591f448e0407ed",
-  measurementId: "G-KV9S3JXSP2"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 };
 
 // Initialize Firebase
