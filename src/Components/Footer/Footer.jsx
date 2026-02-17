@@ -1,15 +1,15 @@
 import {UseGlobalContext} from "../../Hooks/UseGlobalContext"
 import { NavLink } from 'react-router-dom'
-// import {SignOutfrom} from "../../Hooks/UseSignOut"
+import {SignOutfrom} from "../../Hooks/UseLoginOut"
 
 
 const Footer = () => {
   const {user} = UseGlobalContext()
-    // const {signOutUser} = SignOutfrom()
+    const {signOutUser} = SignOutfrom()
 
   return (
     <div>
-       {/* {user && ( 
+       {user && ( 
             <div className='flex justify-end items-center'>
                 <button className='btn mr-5' onClick={signOutUser}>Log Uout </button>
             </div>
@@ -20,8 +20,7 @@ const Footer = () => {
                 <NavLink className="btn" to="/Login">login</NavLink>
                 <NavLink className="btn" to="/SignUp">sign up</NavLink>
             </nav>
-        )} */}
-        footer
+        )}
     </div>
   )
 }

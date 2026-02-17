@@ -5,7 +5,7 @@ import { createContext, useEffect, useReducer } from "react";
 export const GlobalContext = createContext()
 
 import {  onAuthStateChanged } from "firebase/auth";
-// import { auth } from "../FireBase/FireBaseConfig";
+import { auth } from "../FireBase/FireBaseConfig";
 
 
     const changeState = (state, action) =>{
@@ -33,10 +33,10 @@ export const GlobalContextProvider = ( {children} ) => {
     }) 
 
     useEffect(()=>{
-        // onAuthStateChanged(auth, (user)=>{
-        //     dispatch({type: "LOGIN", payload: user})
-        //     dispatch({type: "AUTH_READY" })
-        // })
+        onAuthStateChanged(auth, (user)=>{
+            dispatch({type: "LOGIN", payload: user})
+            dispatch({type: "AUTH_READY" })
+        })
     },[])
 
 

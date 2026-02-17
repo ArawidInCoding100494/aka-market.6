@@ -2,7 +2,9 @@ import Header from '../../Components/Header/Header'
 import { NavLink, Outlet } from 'react-router-dom'
 import Footer from '../../Components/Footer/Footer'
 
-const RootLayOut = () => {
+const RootLayOut = ({user}) => {
+
+    const role = user.email;
 
 
   return (
@@ -15,8 +17,10 @@ const RootLayOut = () => {
         <main className="flex flex-col lg:flex-row gap-2 flex-1 overflow-hidden p-1" >
             <nav className='lg:w-[15%]'>
 
+            {role ===  "rav@gmail.com" ? (
             <div className="w-full p-2 grid grid-cols-3 gap-2 shrink-0
-               lg:grid-cols-1 lg:w-full lg:flex lg:flex-col lg:overflow-y-auto">
+               lg:grid-cols-1 lg:w-full lg:flex lg:flex-col lg:overflow-y-auto"
+          >
                 <NavLink className={({isActive})=>
                 `nav-link ${isActive ? "nav-link-active" : "nav-link-inactive"} `
                 } to="/" >
@@ -33,6 +37,18 @@ const RootLayOut = () => {
                     Xisobotlar
                 </NavLink>
             </div>
+            ) : (
+                <div className="w-full p-2 grid grid-cols-3 gap-2 shrink-0
+               lg:grid-cols-1 lg:w-full lg:flex lg:flex-col lg:overflow-y-auto"
+          >
+            <NavLink className={({isActive})=>
+                `nav-link ${isActive ? "nav-link-active" : "nav-link-inactive"} `
+                } to="/" >
+                    savdo
+                </NavLink>
+          </div>
+            )
+            }
             
             </nav>
 

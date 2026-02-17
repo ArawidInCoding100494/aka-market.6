@@ -1,5 +1,5 @@
 
-import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom"
+import { createBrowserRouter, createRoutesFromElements, Navigate, Route, RouterProvider } from "react-router-dom"
 
 // roots
 import RootLayOut from "./RootLayOuts/RootLayOut/RootLayOut"
@@ -8,26 +8,38 @@ import RootLayOut from "./RootLayOuts/RootLayOut/RootLayOut"
 import DayTrade from "./Pages/DayTrade/DayTrade"
 import MainBase from "./Pages/MainBase/MainBase"
 import Xisobotlar from "./Pages/Xisobotlar/Xisobotlar"
+import { UseGlobalContext } from "./Hooks/UseGlobalContext"
+import ProtectedRoutes from "./Components/ProtectedRoutes/ProtectedRoutes"
+import Login from "./Pages/Auth/Login"
+import SignUp from "./Pages/Auth/SignUp"
 
 
 
 function App() {
+  const { user, authReady } = UseGlobalContext()
 
   const routes = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/">
-        <Route element={<RootLayOut/>}>
+     <Route path="/">
+        <Route  element={
+          <ProtectedRoutes user={user}>
+          <RootLayOut user={user}/>
+        </ProtectedRoutes>}>
+
         <Route path="/" element={<DayTrade/>} />
         <Route path="/MainBase" element={<MainBase/>} />
         <Route path="/Xisobotlar" element={<Xisobotlar/>} />
         </Route>
+        <Route path="Login" element={user ? <Navigate to="/" /> : <Login />} />
+        <Route
+          path="SignUp"
+          element={user ? <Navigate to="/" /> : <SignUp />}
+        />
       </Route>
     )
   )
 
-
-
-  return <RouterProvider router={routes} />
+    return <>{authReady && <RouterProvider router={routes} />}</>;
 }
 
 export default App
