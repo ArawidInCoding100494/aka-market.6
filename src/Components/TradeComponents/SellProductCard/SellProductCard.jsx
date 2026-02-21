@@ -25,7 +25,10 @@ const SellProductCard = ({ searchTerm }) => {
         <div className='lg:grid grid-cols-2 gap-1  '>
         {filteredProducts && filteredProducts.map((product)=>(
             <div  key={product.id}
-            className='sellCard border my-1 shadow rounded-2xl p-2 capitalize bg-[#2D5F5D] text-white '>
+            className={`sellCard border my-1 shadow rounded-2xl p-2 capitalize text-white ${
+              product.omborda <= 0 ? 'bg-gray-400/50' : 'bg-[#2D5F5D]'
+            }`}
+          >
                 <div className='flex items-center justify-between '>
                     <h3 className='capitalize'>brend: 
                         <span className='text-2xl font-bold'> {product.bName} </span></h3>
@@ -35,9 +38,17 @@ const SellProductCard = ({ searchTerm }) => {
                 </div>
                 <div className='flex items-center justify-between my-2'>
                     <h3>omborda: <span> {product.omborda}</span></h3>
-                    <button className='btn'
-                    onClick={()=>setOpenSellModal(product)}
-                    >sotish</button>
+                    <button 
+                      className={`btn ${product.omborda <= 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
+                      disabled={product.omborda <= 0} 
+                      onClick={() => {
+                        if (product.omborda > 0) {
+                          setOpenSellModal(product);
+                        }
+                      }}
+                    >
+                      {product.omborda <= 0 ? "bu tovar 0 ta" : "sotish"}
+                    </button>
                 </div>
             </div>
         ))}

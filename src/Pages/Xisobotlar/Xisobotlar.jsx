@@ -1,9 +1,11 @@
 import  { useState } from 'react'
 import ContentUp from '../../Components/ContentUp/ContentUp'
 import {UseCollection } from "../../Hooks/UseCollection"
+import { UseFireStore } from '../../Hooks/UseFireStore';
 
 const Xisobotlar = () => {
        const { data: soldProducts } = UseCollection("soldProducts");
+       const {deleteDocument: deleteProduct} = UseFireStore("soldProducts")
        const [searchTerm, setSearchTerm] = useState("");
        const [showXisobotText, setShowXisobotText] = useState(false)
 
@@ -69,6 +71,15 @@ const Xisobotlar = () => {
           : 0;
 
 
+
+            const handleDelete = (id) => {
+              const isConfirm = window.confirm("Rostdan ham o‘chirmoqchimisiz?");
+              if (!isConfirm) return;
+
+              deleteProduct(id);
+            };
+
+
   return (
     <div>
       <div className=" w-[50%]">
@@ -94,6 +105,7 @@ const Xisobotlar = () => {
                     <th>itogo</th>
                     <th>foyda</th>
                     <th>sana</th>
+                    <th>delete</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -111,6 +123,9 @@ const Xisobotlar = () => {
                       <td  data-label="sana" className="table-card-cell" >
                         {product.vaqt?.kun}.{product.vaqt?.oy}.{product.vaqt?.yil}
                         </td>
+                      <td data-label="sana" className="table-card-cell"
+                      onClick={() => handleDelete(product.id)}
+                      >🗑 delete</td>
                     </tr> 
                     ))
                   ) : (
