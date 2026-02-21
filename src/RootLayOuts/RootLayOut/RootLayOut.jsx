@@ -36,6 +36,16 @@ const RootLayOut = ({user}) => {
                 } to="Xisobotlar" >
                     Xisobotlar
                 </NavLink>
+                <NavLink className={({isActive})=>
+                `nav-link ${isActive ? "nav-link-active" : "nav-link-inactive"} `
+                } to="oldiBerdi" >
+                    oldi berdi
+                </NavLink>
+                <NavLink className={({isActive})=>
+                `nav-link ${isActive ? "nav-link-active" : "nav-link-inactive"} `
+                } to="nasiya" >
+                    nasiya
+                </NavLink>
             </div>
             ) : (
                 <div className="w-full p-2 grid grid-cols-3 gap-2 shrink-0

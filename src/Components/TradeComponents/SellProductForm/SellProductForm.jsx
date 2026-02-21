@@ -7,9 +7,8 @@ const SellProductForm = ({product, setOpenSellModal}) => {
     const [sellAmount, setSellAmount] = useState("")
     const [sellPrice, setSellPrice] = useState("")
     const [itogo, setItogo] = useState("0")
-    const [soldProfit, setSoldProfit] = useState()
+    const [soldProfit, setSoldProfit] = useState("")
 
-    // console.log(product)
 
     useEffect(()=>{
         const calculateItogo = Number(sellAmount) * Number(sellPrice)
@@ -110,6 +109,17 @@ const SellProductForm = ({product, setOpenSellModal}) => {
                     placeholder='narxi...'
                     value={sellPrice}
                     onChange={(e)=>setSellPrice(e.target.value)} />
+                </label>
+
+                <label className='formLabel mt-1'>
+                    <span>foyda: 
+                        {/* <span className='text-[12px] text-black/40 ml-1'>{product.cPrice} kelishi</span> */}
+                        </span>
+                    <input className='inp' 
+                    type="number" 
+                    placeholder='foyda...'
+                    value={soldProfit}
+                    onChange={(e)=>setSoldProfit(e.target.value)} />
                 </label>
 
                 <label className='formLabel mt-1'>

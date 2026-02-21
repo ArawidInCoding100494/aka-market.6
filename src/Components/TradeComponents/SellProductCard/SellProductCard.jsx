@@ -25,8 +25,8 @@ const SellProductCard = ({ searchTerm }) => {
         <div className='lg:grid grid-cols-2 gap-1  '>
         {filteredProducts && filteredProducts.map((product)=>(
             <div  key={product.id}
-            className={`sellCard border my-1 shadow rounded-2xl p-2 capitalize text-white ${
-              product.omborda <= 0 ? 'bg-gray-400/50' : 'bg-[#2D5F5D]'
+            className={`sellCard border my-1 shadow rounded-2xl p-2 capitalize  ${
+              product.omborda <= 0 ? 'text-[#2D5F5D] bg-white' : 'bg-[#2D5F5D] text-white'
             }`}
           >
                 <div className='flex items-center justify-between '>

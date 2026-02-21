@@ -12,6 +12,8 @@ import { UseGlobalContext } from "./Hooks/UseGlobalContext"
 import ProtectedRoutes from "./Components/ProtectedRoutes/ProtectedRoutes"
 import Login from "./Pages/Auth/Login"
 import SignUp from "./Pages/Auth/SignUp"
+import OlidiBerdi from "./Pages/OlidiBerdi/OlidiBerdi"
+import Nasiya from "./Pages/Nasiya/Nasiya"
 
 
 
@@ -27,8 +29,10 @@ function App() {
         </ProtectedRoutes>}>
 
         <Route path="/" element={<DayTrade/>} />
-        <Route path="/MainBase" element={<MainBase/>} />
-        <Route path="/Xisobotlar" element={<Xisobotlar/>} />
+        <Route path="mainBase" element={<MainBase/>} />
+        <Route path="xisobotlar" element={<Xisobotlar/>} />
+        <Route path="oldiBerdi" element={<OlidiBerdi/>} />
+        <Route path="nasiya" element={<Nasiya/>} />
         </Route>
         <Route path="Login" element={user ? <Navigate to="/" /> : <Login />} />
         <Route

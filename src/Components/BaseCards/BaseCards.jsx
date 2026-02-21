@@ -1,46 +1,40 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { UseCollection } from '../../Hooks/UseCollection'
 import BaseCard from '../BaseCard/BaseCard'
 import Modal from '../Modal/Modal'
-import CreateBrand from '../CreateBrand/CreateBrand'
 import CreateProduct from '../CreateProduct/CreateProduct'
 
-const BaseCards = ({ searchTerm }) => {
+const BaseCards = ({ searchTerm, getBrendId, setGetBrendId }) => {
     const {data: products} = UseCollection("products")
-    const {data: brends} = UseCollection("brends")
-    const [getBrendId, setGetBrendId] = useState(null)
-    const [openBrendModal, setOpenBrendModal] = useState(false)
     const [openProductModal, setOpenProductModal] = useState(false)
 
     const filteredProducts = products
-  ?.filter((product) => {
-    // 1. Brend bo‘yicha filter
-    if (!getBrendId) return true;
-    return product.brendId === getBrendId;
-  })
-  ?.filter((product) => {
-    // 2. Qidiruv bo‘yicha filter
-    if (!searchTerm.trim()) return true;
+      ?.filter((product) => {
+        // 1. Brend bo‘yicha filter
+        if (!getBrendId) return true;
+        return product.brendId === getBrendId;
+      })
+      ?.filter((product) => {
+        // 2. Qidiruv bo‘yicha filter
+        if (!searchTerm.trim()) return true;
 
-    const search = searchTerm.toLowerCase();
+        const search = searchTerm.toLowerCase();
 
-    return (
-      product.pName?.toLowerCase().includes(search) ||
-      product.bName?.toLowerCase().includes(search)
-    );
-  });
+        return (
+          product.pName?.toLowerCase().includes(search) ||
+          product.bName?.toLowerCase().includes(search)
+        );
+      });
+
+
 
 
 
   return (
-    <div className='shadow'>
-    <div className='brendCards flex py-2 '>
-        {/* create brend */}
-        {openBrendModal && <Modal
-        close={()=>setOpenBrendModal(false)}
-        title={"Yangi brend qo'shing"}>
-            <CreateBrand setOpenBrendModal={setOpenBrendModal}/>
-        </Modal>}
+    <div className='shadow relative'>
+    <div className='brendCards flex flex-col '>
+
+      
 
         {/* create product */}
         {openProductModal && <Modal 
@@ -49,20 +43,13 @@ const BaseCards = ({ searchTerm }) => {
          <CreateProduct setOpenProductModal={setOpenProductModal}/>
          </Modal>}
 
-        <div className=' w-full shadow pl-2'>
-        {brends && brends.map((brend)=>(
-            <div className='brendCard' key={brend.id}
-              onClick={()=>setGetBrendId(brend.id)}>
-              <h2 className='text-2xl font-bold capitalize'>{brend.bName}</h2>
-            </div>
-        ))}
-        </div>
-        <div className='w-[40%] lg:w-[30%] shadow lg:px-2'>
-            <button className="btn text-[14px]" onClick={()=>setOpenBrendModal(true)}>brend yaratish</button>
-        </div>
+        
+
+        
+
     </div>
 
-    <div className=' '>
+    <div className='products '>
         <div className="productsUp flex items-center justify-between p-2 my-2 ">
             <h3 className='capitalize text-2xl font-bold lg:ml-18'>mahsulotlar</h3>
         <div className="addNew pr-3">
@@ -72,6 +59,7 @@ const BaseCards = ({ searchTerm }) => {
 
 
         <div className="productsDown grid lg:grid-cols-2 gap-2">
+          {/* <h3>vbnm,.</h3> */}
         {filteredProducts?.map((product)=>(
             <BaseCard key={product.id} product={product} />
         ))}

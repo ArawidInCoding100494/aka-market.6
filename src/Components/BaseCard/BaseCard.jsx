@@ -22,10 +22,10 @@ const BaseCard = ({product}) => {
 
 
   return (
-    <div className= {`card  text-white rounded-2xl p-2 px-3 my-1 capitalize
-    ${product.omborda <= 0 ? "bg-[#294140]" : "bg-[#2D5F5D]"}
+    <div className= {`card   rounded-2xl p-2 px-3 my-1 capitalize
+    ${product.omborda <= 0 ? "text-[#2D5F5D] bg-white border-3" : "bg-[#2D5F5D] text-white"}
     `}>
-      <div className='flex items-center justify-between'>
+      <div className='flex-col  items-center justify-between'>
         <h3>Brend: <span className='font-bold text-2xl capitalize'>{product.bName}</span></h3>
         <h4>Maxsulot: <span className='font-bold text-2xl capitalize'>{product.pName}</span></h4>
       </div>
@@ -34,7 +34,7 @@ const BaseCard = ({product}) => {
         <h5>kelish narxi: {product.cPrice}</h5>
       </div>
       <div className='flex items-center justify-between my-2'>
-        <h5 className={`${product.omborda <= 0 ? "text-red-700" : ""}`}>omborda {product?.omborda}</h5>
+        <h5 >omborda {product?.omborda}</h5>
         <h5>sotildi {product?.soldAmount}</h5>
       </div>
       <div className='flex items-center justify-between'>
@@ -55,7 +55,7 @@ const BaseCard = ({product}) => {
          >🗑 delete</button>
 
 
-        <button className='btn'
+        <button className='btn '
         onClick={()=>setAddProduct(product)}
         >➕</button>
 

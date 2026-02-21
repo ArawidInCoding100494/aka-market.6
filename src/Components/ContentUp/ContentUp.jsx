@@ -8,7 +8,7 @@ const ContentUp = ({ title, searchTerm, setSearchTerm }) => {
 
   return (
     <div>
-    <div className="ContentUp flex items-center justify-between p-2">
+    <div className="ContentUp flex items-center justify-between lg:p-2">
       <div className="search">
         <Searching
         value={searchTerm}

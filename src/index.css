@@ -25,7 +25,7 @@
 
 @layer components{
     .btn{@apply
-    bg-[#2D5F5D] text-white capitalize p-1 rounded-[10px] cursor-pointer border hover:bg-white hover:text-[#2D5F5D]
+    bg-[#2D5F5D] text-white capitalize p-1 rounded-[10px] cursor-pointer border hover:bg-white hover:text-[#2D5F5D] duration-500
     ;}
 
     .inp{@apply
@@ -34,6 +34,10 @@
 
     .brendCard{@apply
       border w-[95%] lg:w-[70%]  lg:text-center px-3 py-1 cursor-pointer rounded-2xl bg-[#2D5F5D] text-white my-2 hover:bg-white hover:text-[#2D5F5D] duration-300
+    }
+
+    .brendCard.active{@apply
+      bg-white text-[#2D5F5D] hover:bg-[#2D5F5D]  hover:text-white
     }
     
       .nav-link {
