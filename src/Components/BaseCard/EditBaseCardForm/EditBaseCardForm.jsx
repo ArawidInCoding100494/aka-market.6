@@ -53,8 +53,7 @@ const EditBaseCardForm = ({product, seteditBaseCard}) => {
                  <label className='formLabel mt-1'>
                     <span>brend nomi:</span>
                     <input className='inp' 
-                    type="text" 
-                    placeholder={product.bName} 
+                    type="text" defaultValue={product.bName}
                     ref={bName}
                     />
                 </label>
@@ -63,7 +62,7 @@ const EditBaseCardForm = ({product, seteditBaseCard}) => {
                     <span>maxsulot nomi:</span>
                     <input className='inp' 
                     type="text" 
-                    placeholder={product.pName}   
+                    defaultValue={product.pName}  
                     ref={pName}  />
                 </label>
 

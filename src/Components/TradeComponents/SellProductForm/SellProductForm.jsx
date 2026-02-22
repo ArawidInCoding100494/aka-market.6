@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { UseFireStore } from '../../../Hooks/UseFireStore'
 
 const SellProductForm = ({product, setOpenSellModal}) => {
@@ -8,6 +8,20 @@ const SellProductForm = ({product, setOpenSellModal}) => {
     const [sellPrice, setSellPrice] = useState("")
     const [itogo, setItogo] = useState("0")
     const [soldProfit, setSoldProfit] = useState("")
+
+
+    const hozir = new Date();
+
+    const yil = hozir.getFullYear();
+    const oy = hozir.getMonth() + 1; 
+    const kun = hozir.getDate();
+    const soat = hozir.getHours();
+    const minut = hozir.getMinutes();
+
+
+    const day = useRef()
+    const month = useRef()
+    const year = useRef()
 
 
     useEffect(()=>{
@@ -21,17 +35,6 @@ const SellProductForm = ({product, setOpenSellModal}) => {
         e.preventDefault()
 
         try{
-
-         const hozir = new Date();
-
-            const yil = hozir.getFullYear();
-            const oy = hozir.getMonth() + 1; 
-            const kun = hozir.getDate();
-            const soat = hozir.getHours();
-            const minut = hozir.getMinutes();
-
-
-
             await editProducts(product.id, {
               omborda:
                Number(product.omborda) > Number(sellAmount)
@@ -50,9 +53,9 @@ const SellProductForm = ({product, setOpenSellModal}) => {
             itogo: Number(itogo),
             soldProfit: Number(soldProfit),
             vaqt: {
-                yil: yil,
-                oy: oy,
-                kun: kun,
+                yil: Number(year.current.value) || yil,
+                oy: Number(month.current.value) || oy,
+                kun: Number(day.current.value) || kun,
                 soat: soat,
                 minut: minut,
             },
@@ -112,9 +115,7 @@ const SellProductForm = ({product, setOpenSellModal}) => {
                 </label>
 
                 <label className='formLabel mt-1'>
-                    <span>foyda: 
-                        {/* <span className='text-[12px] text-black/40 ml-1'>{product.cPrice} kelishi</span> */}
-                        </span>
+                    <span>foyda:</span>
                     <input className='inp' 
                     type="number" 
                     placeholder='foyda...'
@@ -126,6 +127,31 @@ const SellProductForm = ({product, setOpenSellModal}) => {
                     <span>itogo:</span>
                     <span className='inp' >{itogo}</span>
                 </label>
+
+                <div className='times grid grid-cols-3 gap-2'>
+                    <label className='formLabel mt-1'>
+                        <span>kun:</span>
+                        <input className='inp' type="number" 
+                        defaultValue={kun}
+                        // value={kun}
+                        ref={day} 
+                        />
+                    </label>
+
+                    <label className='formLabel mt-1'>
+                        <span>oy:</span>
+                        <input className='inp' type="number" 
+                        defaultValue={oy}
+                        ref={month} />
+                    </label>
+
+                    <label className='formLabel mt-1'>
+                        <span>yil:</span>
+                        <input className='inp' type="number" 
+                        defaultValue={yil}
+                        ref={year} />
+                    </label>
+                </div>
 
                 <div className="btns">
                     <button className="btn" type='button'

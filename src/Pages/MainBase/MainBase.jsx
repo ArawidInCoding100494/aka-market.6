@@ -4,6 +4,7 @@ import { useState } from "react";
 import CreateBrand from "../../Components/CreateBrand/CreateBrand";
 import Modal from "../../Components/Modal/Modal";
 import { UseCollection } from "../../Hooks/UseCollection";
+import TotalValues from "../../Components/TotalValues/TotalValues";
 
 const MainBase = () => {
          const {data: brends} = UseCollection("brends")
@@ -11,7 +12,12 @@ const MainBase = () => {
          const [openBrendModal, setOpenBrendModal] = useState(false)
          const [openBrends, setOpenBrends] = useState(false)
          const [getBrendId, setGetBrendId] = useState(null)
+         const [openJamiXisobot, setOpenJamiXisobot] = useState(false)
          const [activCards, setActiveCards] = useState("")
+
+
+    
+
 
 
   
@@ -42,6 +48,10 @@ const MainBase = () => {
         onClick={()=>setOpenBrends(true)}
         >brendlar</h2>
 
+        <button className="btn"
+        onClick={()=>setOpenJamiXisobot(true)}
+        >jami xisobotlar</button>
+
         <div className=''>
             <button className="btn " onClick={()=>setOpenBrendModal(true)}>brend yaratish</button>
         </div>
@@ -68,6 +78,13 @@ const MainBase = () => {
         <div className="main_contents shadow">
             <BaseCards searchTerm={searchTerm} getBrendId={getBrendId}/>
         </div>
+
+
+        {openJamiXisobot && <Modal
+        close={()=>setOpenJamiXisobot(false)}
+        title={"jami xisobotlar"}>
+            <TotalValues setOpenJamiXisobot={setOpenJamiXisobot}/>
+        </Modal>}
 
 
 

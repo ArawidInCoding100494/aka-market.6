@@ -131,7 +131,7 @@ const Xisobotlar = () => {
                   ) : (
                     <tr>
                       <td colSpan="9" className="text-center py-6">
-                        {searchTerm ? "Hech narsa topilmadi" : "Bugun savdo yo‘q"}
+                        {searchTerm ? "Hech narsa topilmadi" : "hozircha savdo yo‘q"}
                       </td>
                     </tr>
                   )}

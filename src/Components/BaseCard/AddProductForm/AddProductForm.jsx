@@ -13,7 +13,8 @@ const AddProductForm = ({product, setAddProduct}) => {
         try{
          await addProduct(product.id,{
             cAmount: (product.cAmount + Number(addAmount)) || product.cAmount,
-            cPrice: addNewPrice || cPrice
+            omborda: (product.omborda + Number(addAmount)) || product.omborda,
+            cPrice: addNewPrice || product.cPrice
         })
 
         alert("qo'shimcha maxsulot qo'shildi!!!")
@@ -66,7 +67,6 @@ const AddProductForm = ({product, setAddProduct}) => {
                 <label className='formLabel mt-1'>
                     <span>narx o'zgardimi?</span>
                     <input className='inp' 
-                    required
                     type="number" 
                     placeholder="o'zgargan narx..."
                     value={addNewPrice}
