@@ -4,7 +4,7 @@ import { useState } from "react";
 import CreateBrand from "../../Components/CreateBrand/CreateBrand";
 import Modal from "../../Components/Modal/Modal";
 import { UseCollection } from "../../Hooks/UseCollection";
-import TotalValues from "../../Components/TotalValues/TotalValues";
+import { FaBars } from "react-icons/fa";
 
 const MainBase = () => {
          const {data: brends} = UseCollection("brends")
@@ -13,14 +13,8 @@ const MainBase = () => {
          const [openBrends, setOpenBrends] = useState(false)
          const [getBrendId, setGetBrendId] = useState(null)
          const [openJamiXisobot, setOpenJamiXisobot] = useState(false)
-         const [activCards, setActiveCards] = useState("")
+         const [openBars, setOpenBars] = useState(false)
 
-
-    
-
-
-
-  
 
 
   return (
@@ -44,17 +38,21 @@ const MainBase = () => {
       <div className="baseMain">
 
         <div className="flex items-center justify-between px-3 lg:px-6 py-3">
-        <h2 className="capitalize text-2xl font-bold cursor-pointer"
-        onClick={()=>setOpenBrends(true)}
-        >brendlar</h2>
-
-        <button className="btn"
-        onClick={()=>setOpenJamiXisobot(true)}
-        >jami xisobotlar</button>
-
+        
         <div className=''>
             <button className="btn " onClick={()=>setOpenBrendModal(true)}>brend yaratish</button>
         </div>
+        <div className="flex items-center justify-between w-[50%] lg:w-[20%]">
+        <h2 className="capitalize text-2xl font-bold cursor-pointer "
+        onClick={()=>setOpenBrends(true)}
+        >brendlar</h2>
+
+        <div className="text-2xl cursor-pointer  "
+        onClick={()=> setOpenBars(!openBars)} >
+          <FaBars />
+        </div>
+        </div>
+
         </div>
 
       
@@ -76,15 +74,8 @@ const MainBase = () => {
 
 
         <div className="main_contents shadow">
-            <BaseCards searchTerm={searchTerm} getBrendId={getBrendId}/>
+            <BaseCards searchTerm={searchTerm} getBrendId={getBrendId} openBars={openBars} setOpenBars={setOpenBars}/>
         </div>
-
-
-        {openJamiXisobot && <Modal
-        close={()=>setOpenJamiXisobot(false)}
-        title={"jami xisobotlar"}>
-            <TotalValues setOpenJamiXisobot={setOpenJamiXisobot}/>
-        </Modal>}
 
 
 
