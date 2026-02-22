@@ -7,6 +7,7 @@ import CreateProduct from '../CreateProduct/CreateProduct'
 const BaseCards = ({ searchTerm, getBrendId, setGetBrendId }) => {
     const {data: products} = UseCollection("products")
     const [openProductModal, setOpenProductModal] = useState(false)
+    const [opneBrendXisob, setOpneBrendXisob] = useState(false)
 
     const filteredProducts = products
       ?.filter((product) => {
@@ -43,6 +44,13 @@ const BaseCards = ({ searchTerm, getBrendId, setGetBrendId }) => {
          <CreateProduct setOpenProductModal={setOpenProductModal}/>
          </Modal>}
 
+
+         {opneBrendXisob && <Modal 
+         close={()=>setOpneBrendXisob(false)}
+         title={"brend xissobi"}>
+         {/* <CreateProduct /> */}
+         </Modal>}
+
         
 
         
@@ -52,6 +60,9 @@ const BaseCards = ({ searchTerm, getBrendId, setGetBrendId }) => {
     <div className='products '>
         <div className="productsUp flex items-center justify-between p-2 my-2 ">
             <h3 className='capitalize text-2xl font-bold lg:ml-18'>mahsulotlar</h3>
+            <button className='btn'
+            onClick={()=> setOpneBrendXisob(true)}
+            >brend xisobi</button>
         <div className="addNew pr-3">
           <button className="btn" onClick={()=>setOpenProductModal(true)} >maxsulot qoshing</button>
         </div>
@@ -59,7 +70,6 @@ const BaseCards = ({ searchTerm, getBrendId, setGetBrendId }) => {
 
 
         <div className="productsDown grid lg:grid-cols-2 gap-2">
-          {/* <h3>vbnm,.</h3> */}
         {filteredProducts?.map((product)=>(
             <BaseCard key={product.id} product={product} />
         ))}
