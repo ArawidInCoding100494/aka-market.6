@@ -14,6 +14,7 @@ import Login from "./Pages/Auth/Login"
 import SignUp from "./Pages/Auth/SignUp"
 import OlidiBerdi from "./Pages/OlidiBerdi/OlidiBerdi"
 import Nasiya from "./Pages/Nasiya/Nasiya"
+import OldiBerdiCards from "./Components/OlidiBerdiComponents/OldiBerdiCards/OldiBerdiCards"
 
 
 
@@ -31,7 +32,9 @@ function App() {
         <Route path="/" element={<DayTrade/>} />
         <Route path="mainBase" element={<MainBase/>} />
         <Route path="xisobotlar" element={<Xisobotlar/>} />
-        <Route path="oldiBerdi" element={<OlidiBerdi/>} />
+        <Route path="oldiBerdi" element={<OlidiBerdi/>} >
+        <Route path="oldiBerdiCards" element={<OldiBerdiCards/>} />
+        </Route>
         <Route path="nasiya" element={<Nasiya/>} />
         </Route>
         <Route path="Login" element={user ? <Navigate to="/" /> : <Login />} />

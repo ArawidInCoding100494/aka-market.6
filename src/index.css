@@ -33,7 +33,7 @@
     }
 
     .brendCard{@apply
-      border w-[95%] lg:w-[70%]  lg:text-center px-3 py-1 cursor-pointer rounded-2xl bg-[#2D5F5D] text-white my-2 hover:bg-white hover:text-[#2D5F5D] duration-300
+      border capitalize w-[95%] lg:w-[70%]  lg:text-center px-3 py-1 cursor-pointer rounded-2xl bg-[#2D5F5D] text-white my-2 hover:bg-white hover:text-[#2D5F5D] duration-300
     }
 
     .brendCard.active{@apply
